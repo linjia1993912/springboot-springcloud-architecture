@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 //使用消息总线刷新配置文件
 //RefreshScope是spring cloud提供的一种特殊的scope实现，用来实现配置、实例热加载。
+//RefreshScope是因为config client只会在第一次初始化bean的时候获取一次配置，后面如果需要更新的话，
+// 需要设置这个注解在controller上面，并且引入spring actuator的包，通过发送post请求来更新bean里面的值
 @RefreshScope
 public class ProviderController {
 
