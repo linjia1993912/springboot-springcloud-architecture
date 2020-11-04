@@ -8,5 +8,5 @@ package com.example.providerservice.service;
 public interface ProviderService {
     String home(String name);
 
-    String getConfig(String config);
+    String getConfig();
 }
