@@ -13,6 +13,7 @@ public class EurekaServerApplication {
 	//eureka server 是有界面的，启动工程,打开浏览器访问： http://localhost:8761
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaServerApplication.class, args);
+		System.out.println("注册中心已启动");
 	}
 
 }
