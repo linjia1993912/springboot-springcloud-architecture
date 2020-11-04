@@ -11,9 +11,9 @@
 	</parent>
 
 	<groupId>com.example</groupId>
-	<artifactId>service-ribbon</artifactId>
+	<artifactId>ribbon-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service-ribbon</name>
+	<name>ribbon-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

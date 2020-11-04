@@ -4,5 +4,5 @@
 配置中心 config-server 8888
 服务提供者 provider-service 8762、8763
 服务消费者 consumer-service 8765    Feign
-服务消费者 service-ribbon   8764    ribbon+restTemplate
+服务消费者 ribbon-service   8764    ribbon+restTemplate
 网关 zuul  8769

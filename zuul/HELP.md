@@ -23,5 +23,5 @@ The bean 'proxyRequestHelper', defined in class path resource...
 eureka-server
 provider-service 可以启动2个服务
 consumer-service 
-service-ribbon 
+ribbon-service
 zuul
