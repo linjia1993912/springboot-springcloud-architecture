@@ -1,7 +1,8 @@
 
 ###高可用部署
-eureka-server 8761
-config-server 8888
-provider-service 8762、8763
-consumer-service 8764、8765
-zuul 8769
+注册中心 eureka-server 8761
+配置中心 config-server 8888
+服务提供者 provider-service 8762、8763
+服务消费者 consumer-service 8765    Feign
+服务消费者 service-ribbon   8764    ribbon+restTemplate
+网关 zuul  8769
