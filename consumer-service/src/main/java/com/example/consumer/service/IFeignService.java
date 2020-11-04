@@ -32,4 +32,15 @@ public interface IFeignService {
     @GetMapping("/hi")
     String home(@RequestParam(value = "name") String name);
 
+    /**
+     * @Description:消费provider-service接口
+     * 获取配置中心配置
+     * @Author LinJia
+     * @Date 2020/11/4 13:24
+     * @Param []
+     * @return java.lang.String
+     **/
+    @GetMapping("/getConfig")
+    String getConfig();
+
 }

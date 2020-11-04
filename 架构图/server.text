@@ -1,0 +1,7 @@
+
+###高可用部署
+eureka-server 8761
+config-server 8888
+provider-service 8762、8763
+consumer-service 8764、8765
+zuul 8769

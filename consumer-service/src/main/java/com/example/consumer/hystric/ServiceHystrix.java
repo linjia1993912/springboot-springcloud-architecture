@@ -24,4 +24,9 @@ public class ServiceHystrix implements IFeignService {
     public String home(String name) {
         return "sorry "+name;
     }
+
+    @Override
+    public String getConfig() {
+        return "sorry 无法获取配置中心配置";
+    }
 }

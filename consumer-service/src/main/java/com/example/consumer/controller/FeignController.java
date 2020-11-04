@@ -30,4 +30,10 @@ public class FeignController {
         System.out.println("----------feign-service");
         return iFeignService.home(name);
     }
+
+    @GetMapping("/getConfig")
+    public String getConfig() {
+        System.out.println("----------feign-service");
+        return iFeignService.getConfig();
+    }
 }

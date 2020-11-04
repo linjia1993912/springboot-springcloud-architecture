@@ -21,6 +21,8 @@ public class ProviderServiceImpl implements ProviderService {
     @Value("${server.port}")
     String port;
 
+    //port用来测试负载均衡,多次访问可以区分不同服务端口
+
     @Override
     public String home(String name) {
         String port = "0";
@@ -33,7 +35,7 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public String getConfig() {
-        System.out.println("配置中心配置foo："+foo);
-        return "配置中心配置foo-"+foo;
+        System.out.println("配置中心配置foo："+foo+" i am from port:"+port);
+        return "配置中心配置foo-"+foo+" i am from port:"+port;
     }
 }
