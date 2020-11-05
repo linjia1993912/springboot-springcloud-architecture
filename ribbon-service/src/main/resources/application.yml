@@ -6,7 +6,7 @@ spring:
   application:
     name: ribbon-service
 
-#\u914D\u7F6E\u6CE8\u518C\u4E2D\u5FC3\u5730\u5740
+#配置注册中心地址
 eureka:
   client:
     service-url:
