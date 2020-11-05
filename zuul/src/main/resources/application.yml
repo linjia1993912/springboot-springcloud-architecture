@@ -25,4 +25,12 @@ zuul:
       path: /api-b/**
       serviceId: consumer-service
   prefix: /zl #统一前缀  注意事项：统一前缀切勿设置zuul关键字，否则请求无法到达
-  ignored-services: "*"  #屏蔽服务名,过滤直接拿consumer-service服务名访问的请求
+  ignored-services: "*" #屏蔽服务名,过滤直接拿consumer-service服务名访问的请求
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
+
+#zuul负载均衡
+ribbon:
+  ConnectionTimeout: 500
+  ReadTimeout: 2000
