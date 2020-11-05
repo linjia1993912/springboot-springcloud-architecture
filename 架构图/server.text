@@ -5,4 +5,6 @@
 服务提供者 provider-service 8610、8611
 服务消费者 consumer-service 8510  8512  Feign
 服务消费者 ribbon-service   8410  8412  ribbon+restTemplate
-网关 zuul  8769
+网关 zuul  8268 8269
+
+Nginx+zuul集群达到网关高可用

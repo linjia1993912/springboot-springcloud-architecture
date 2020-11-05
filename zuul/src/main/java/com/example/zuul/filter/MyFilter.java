@@ -5,6 +5,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @Slf4j
 public class MyFilter extends ZuulFilter {
+
+    @Value("${server.port}")
+    String port;
 
     // 定义一个令牌桶，每秒产生2个令牌，即每秒最多处理2个请求
     private static final RateLimiter RATE_LIMITER = RateLimiter.create(2);
@@ -106,6 +110,7 @@ public class MyFilter extends ZuulFilter {
             return null;
         }
         log.info("ok");
+        log.info("访问Zuul网关端口为："+port);
         return null;
     }
 }

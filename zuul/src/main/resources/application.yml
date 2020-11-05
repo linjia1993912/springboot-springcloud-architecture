@@ -1,6 +1,6 @@
-
+#8268 8269
 server:
-  port: 8769
+  port: 8268
 
 spring:
   application:
