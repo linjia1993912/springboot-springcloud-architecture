@@ -1,18 +1,64 @@
-#eureka-server配置
+#eureka-server\u914D\u7F6E
+#8761 8762
 server:
   port: 8761
 
+#\u914D\u7F6E\u670D\u52A1\u540D\u79F0 \u9700\u8981\u6307\u660Espring.application.name,\u8FD9\u4E2A\u5F88\u91CD\u8981
+spring:
+  application:
+    name: eureka-server
+  #profiles:
+    #active: cluster1  #eureka\u96C6\u7FA4\u90E8\u7F72\u6CE8\u610F\u4FEE\u6539\u8FD9\u91CC
+
+###eureka \u5355\u673A\u914D\u7F6E
 eureka:
   instance:
     hostname: localhost
   client:
-    #通过eureka.client.register-with-eureka：false和fetch-registry：false来表明自己是一个eureka server
-    register-with-eureka: false
-    fetch-registry: false
+    #\u901A\u8FC7eureka.client.register-with-eureka\uFF1Afalse\u548Cfetch-registry\uFF1Afalse\u6765\u8868\u660E\u81EA\u5DF1\u662F\u4E00\u4E2Aeureka server
+    register-with-eureka: false    #false\u8868\u793A\u4E0D\u5411\u6CE8\u518C\u4E2D\u5FC3\u6CE8\u518C\u81EA\u5DF1\u3002
+    fetch-registry: false  #false\u8868\u793A\u81EA\u5DF1\u7AEF\u5C31\u662F\u6CE8\u518C\u4E2D\u5FC3\uFF0C\u6211\u7684\u804C\u8D23\u5C31\u662F\u7EF4\u62A4\u670D\u52A1\u5B9E\u4F8B\uFF0C\u5E76\u4E0D\u9700\u8981\u53BB\u68C0\u7D22\u670D\u52A1
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
-#配置服务名称 需要指明spring.application.name,这个很重要
+#\u5982\u679Ceureka\u9700\u8981\u96C6\u7FA4\u90E8\u7F72\u8FBE\u5230\u9AD8\u53EF\u7528\uFF0C\u5219\u9700\u8981\u4FEE\u6539\u4EE5\u4E0B
+#http://${eureka.instance.hostname}:${server.port}/eureka/ \u6709\u4E86\u96C6\u7FA4\u9700\u8981\u5199\u5177\u4F53\u7684ip
+#\u4FEE\u6539\u539F\u5219\u5982\u4E0B\uFF1A
+#1.\u5728\u4EFB\u610F\u4E00\u4E2Aeureka\u9879\u76EE\u4E2D\uFF0C\u5C06\u4E0A\u8FB9\u8FD9\u4E2A\u5730\u5740\u4FEE\u6539\u4E3A\u5176\u4ED6\u4E24\u4E2Aeureka\u9879\u76EE\u7684\u5730\u5740\uFF0C\u4E2D\u95F4\u7528\u9017\u53F7\u9694\u5F00
+#2.\u4F46\u662F\u5462\uFF0C\u8FD9\u4E24\u4E2Aeureka\u9879\u76EE\u7684hostname\u8FD8\u4E0D\u80FD\u4E00\u6837\uFF0C\u4E0D\u80FD\u5168\u90FD\u662Flocalhost\uFF0C\u6240\u4EE5\u5F00\u53D1\u7684\u65F6\u5019\uFF0C\u8981\u5728\u672C\u5730\u8BBE\u7F6E\u865A\u62DF\u57DF\u540D
+#3.\u5728windows\u4E0B\u7684C:\Windows\System32\drivers\etc\HOSTS\u6587\u4EF6\u6700\u540E\u6DFB\u52A0\u5982\u4E0B
+#    127.0.0.1 eureka1
+#    127.0.0.1 eureka2
+#\u8FD9\u6837\uFF0C\u5C31\u53EF\u4EE5\u5C06eureka\u9879\u76EE\u4E2D\u7684hostname\u6539\u4E3A\u4E0A\u8FB9\u4E24\u4E2A\u4E2D\u7684\u4E00\u4E2A\u4E86
+
+#\u96C6\u7FA4\u914D\u7F6E eureka1
+---
 spring:
-  application:
-    name: eureka-server
+  profiles: cluster1
+
+eureka:
+  instance:
+    hostname: eureka1
+  client:
+    #\u901A\u8FC7eureka.client.register-with-eureka\uFF1Afalse\u548Cfetch-registry\uFF1Afalse\u6765\u8868\u660E\u81EA\u5DF1\u662F\u4E00\u4E2Aeureka server
+    register-with-eureka: false    #false\u8868\u793A\u4E0D\u5411\u6CE8\u518C\u4E2D\u5FC3\u6CE8\u518C\u81EA\u5DF1\u3002
+    fetch-registry: false  #false\u8868\u793A\u81EA\u5DF1\u7AEF\u5C31\u662F\u6CE8\u518C\u4E2D\u5FC3\uFF0C\u6211\u7684\u804C\u8D23\u5C31\u662F\u7EF4\u62A4\u670D\u52A1\u5B9E\u4F8B\uFF0C\u5E76\u4E0D\u9700\u8981\u53BB\u68C0\u7D22\u670D\u52A1
+    service-url:
+      defaultZone: http://eureka2:8762/eureka #\u8FD9\u91CC\u8BBE\u7F6E\u9664\u4E86\u81EA\u5DF1\u4E4B\u5916\u53E6\u5916N\u53F0eureka
+
+#\u96C6\u7FA4\u914D\u7F6E eureka2
+---
+spring:
+  profiles: cluster2
+
+eureka:
+  instance:
+    hostname: eureka2
+  client:
+    #\u901A\u8FC7eureka.client.register-with-eureka\uFF1Afalse\u548Cfetch-registry\uFF1Afalse\u6765\u8868\u660E\u81EA\u5DF1\u662F\u4E00\u4E2Aeureka server
+    register-with-eureka: false    #false\u8868\u793A\u4E0D\u5411\u6CE8\u518C\u4E2D\u5FC3\u6CE8\u518C\u81EA\u5DF1\u3002
+    fetch-registry: false  #false\u8868\u793A\u81EA\u5DF1\u7AEF\u5C31\u662F\u6CE8\u518C\u4E2D\u5FC3\uFF0C\u6211\u7684\u804C\u8D23\u5C31\u662F\u7EF4\u62A4\u670D\u52A1\u5B9E\u4F8B\uFF0C\u5E76\u4E0D\u9700\u8981\u53BB\u68C0\u7D22\u670D\u52A1
+    service-url:
+      defaultZone: http://eureka1:8761/eureka #\u8FD9\u91CC\u8BBE\u7F6E\u9664\u4E86\u81EA\u5DF1\u4E4B\u5916\u53E6\u5916N\u53F0eureka
+
+#\u542F\u52A8\u96C6\u7FA4\u6CE8\u610F\u4FEE\u6539\u7AEF\u53E3\u548C spring:profiles.active: cluster
