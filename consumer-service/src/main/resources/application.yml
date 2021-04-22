@@ -10,6 +10,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+  # 解决同实例名服务注册eureka覆盖的问题
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    prefer-ip-address: true
 #Feign是自带断路器的，在D版本的Spring Cloud之后，它没有默认打开。需要在配置文件中配置打开它，在配置文件加以下代码：
 feign:
   hystrix:
